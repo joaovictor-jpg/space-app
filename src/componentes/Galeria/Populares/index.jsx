@@ -1,6 +1,6 @@
 import Titulo from "../../Titulo";
 
-import fotos from '../../../fotos.json';
+import fotos from './fotos-populares.json';
 import styled from "styled-components";
 
 const ColunaFotos = styled.section`

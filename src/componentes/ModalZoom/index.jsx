@@ -1,6 +1,7 @@
-import styled from "styled-components";
-import Imagem from "../Galeria/Imagem";
-import { IoMdClose } from "react-icons/io";
+import { styled } from "styled-components"
+import Imagem from "../Galeria/Imagem"
+import BotaoIcone from "../BotaoIcone"
+import { IoClose } from "react-icons/io5"
 
 const Overlay = styled.div`
     background-color: rgba(0, 0, 0, 0.7);
@@ -9,36 +10,42 @@ const Overlay = styled.div`
     right: 0;
     bottom: 0;
     left: 0;
-`;
+`
 
-const DailogEstilizado = styled.dialog`
+const DialogEstilizado = styled.dialog`
     position: absolute;
     top: 294px;
-`;
+    background: transparent;
+    padding: 0;
+    border: 0;
+    width: 1156px;
+    display: flex;
+    justify-content: center;
+    form {
+        button {
+            position: relative;
+            top: 20px;
+            right: 60px;
+        }
+    }
+`
 
-const ButtonEstilizado = styled.button`
-    position: relative;
-    top: -320px;
-    left: 415px;
-    background-color: transparent;
-    border: none;
-
-`;
-
-const ModalZoom = ({ foto }) => {
+const ModalZoom = ({ foto, aoFechar }) => {
     return (
         <>
             {foto && <>
                 <Overlay />
-                <DailogEstilizado open={!!foto}>
+                <DialogEstilizado open={!!foto} onClose={aoFechar}>
                     <Imagem foto={foto} expandida={true} />
                     <form method="dialog">
-                        <ButtonEstilizado><IoMdClose color="red" size={35} /></ButtonEstilizado>
+                        <BotaoIcone formMethod="dialog">
+                            <IoClose size={25} color="#FFFFFF" />
+                        </BotaoIcone>
                     </form>
-                </DailogEstilizado>
+                </DialogEstilizado>
             </>}
         </>
-    );
-};
+    )
+}
 
-export default ModalZoom;
+export default ModalZoom
